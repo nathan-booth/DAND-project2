@@ -187,7 +187,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -205,7 +205,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[88]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -327,7 +327,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[163]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;family_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;SibSp&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s">&#39;Parch&#39;</span><span class="p">]</span>
@@ -357,7 +357,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[163]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -424,11 +424,45 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="s">&quot;Number of passengers: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;Number of passengers with missing data: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">people_df</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;Number of passengers omitted: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">people_df</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;Proportion of data omitted: &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">179</span> <span class="o">/</span> <span class="mf">891.</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of passengers: 891
+Number of passengers with missing data: 712
+Number of passengers omitted: 179
+Proportion of data omitted: 0.200897867565
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a potentially significant issue. I dropped any rows, about 20% of my data, if they had missing entries in the <em>Age</em> or <em>Embarked</em> columns. I sacrificed them for the cause of easy computation but it's possible some aspect of those individuals would affect my analysis.</p>
 <p>The data seems reasonably clean for answering my questions so let's get to it.</p>
 <h2 id="Question-1:-What-is-the-distribution-of-the-passenger-classes-by-sex,-age,-and-port-of-departure?">Question 1: What is the distribution of the passenger classes by sex, age, and port of departure?<a class="anchor-link" href="#Question-1:-What-is-the-distribution-of-the-passenger-classes-by-sex,-age,-and-port-of-departure?">&#182;</a></h2><p>For this I'll need seaborn documentation on <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/faceted_histogram.html?highlight=linspace">facetting histograms</a>, the <a href="http://stanford.edu/~mwaskom/software/seaborn/generated/seaborn.FacetGrid.html?highlight=facetgrid">FacetGrid</a> function, and numpy's <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linspace.html">linspace</a> function. I got the idea to use seaborn from another <a href="https://github.com/profversaggi/Udacity_Nano_DataScience/blob/master/Project_2/Project%20%23%202%20Submission%20-%20Investigate%20a%20Dataset%20-%20Titanic.ipynb">student's project</a> and its pretty plots.</p>
 
